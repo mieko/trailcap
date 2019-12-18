@@ -356,7 +356,7 @@ class Disector {
     }
   }
 
-  async deClassify(node, page) {
+  async deClass(node, page) {
     const classAttribute = await node.evaluate(e => e.getAttribute("class"));
 
     if (classAttribute) {
@@ -385,7 +385,7 @@ class Disector {
 
     const children = await this.childrenOf(node);
     for (const child of children) {
-      await this.deClassify(child, page);
+      await this.deClass(child, page);
     }
   }
 
@@ -416,7 +416,7 @@ class Disector {
 
     await this.startPhase("deNode", root, page);
     await this.startPhase("deAttribute", root, page);
-    await this.startPhase("deClassify", root, page);
+    await this.startPhase("deClass", root, page);
     await this.startPhase("purgeCss", root, page);
     await this.startPhase("minify", root, page);
 
@@ -438,6 +438,7 @@ const main = async yargs => {
     .alias("s", "show")
     .array("phase")
     .default("phase", ["deNode", "deAttribute"])
+    .alias("p", "phase")
     .nargs("phase", 1)
     .help("h")
     .alias("h", "help").argv;
