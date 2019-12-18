@@ -1,0 +1,16 @@
+{
+  "name": "trailcap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Mike Owens",
+  "license": "Proprietary",
+  "private": true,
+  "dependencies": {
+    "clean-css": "^4.2.1",
+    "html-minifier": "^4.0.0",
+    "pixelmatch": "^5.1.0",
+    "puppeteer": "^2.0.0",
+    "purgecss": "^1.4.2",
+    "yargs": "^15.0.2"
+  }
+}

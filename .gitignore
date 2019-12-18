@@ -1,0 +1,6 @@
+node_modules
+.DS_Store
+*.html
+pristine.png
+diff-*.png
+snap-*.png
