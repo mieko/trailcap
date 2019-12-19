@@ -22,14 +22,16 @@ class Disector {
 
     this.stats = {
       renders: 0,
+
       nodesProcessed: 0,
       nodesRemoved: 0,
+
       attributesProcessed: 0,
       attributesRemoved: 0,
+
       classesProcessed: 0,
       classesRemoved: 0,
 
-      inputSize: this.source.length,
       pristine: false
     };
 
@@ -394,6 +396,7 @@ class Disector {
       this.log(`starting phase: ${name}`);
 
       await this.settle(page);
+      this.stats[`${name}InputSize`] = (await page.content()).length;
 
       if (fn === null) {
         fn = async () => {
@@ -404,7 +407,7 @@ class Disector {
       await fn();
       await this.settle(page);
 
-      this.stats[`${name}Size`] = (await page.content()).length;
+      this.stats[`${name}OutputSize`] = (await page.content()).length;
     }
   }
 
